@@ -1,0 +1,78 @@
+#��������
+spring:
+  profiles:
+    active: dev
+server:
+  port: 16008
+  servlet:
+    context-path: /cc
+---
+#��������
+#spring-boot-autoconfigure
+spring:
+  profiles: dev
+  datasource:
+    name: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    #druid�������
+    druid:
+      #���ͳ�����ص�filters
+      filters: stat
+      driver-class-name: com.mysql.jdbc.Driver
+      #��������
+#      url: jdbc:mysql://10.130.131.204:3323/OMS_DB?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+#      username: oms_db
+#      password: cNqGt78T
+      url: jdbc:mysql://localhost:3306/demo_db?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+      username: root
+      password: 123456
+      #          url: jdbc:mysql://192.168.174.69:3306/hsa_vms?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+      #          username: hsa_vms
+      #          password: hsa_vms
+      #          url: jdbc:mysql://192.168.174.30:3306/qhhs_linksupn_db?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+      #          username: qhhs_linksupn_db
+      #          password: qhhs_linksupn_db
+      #���ó�ʼ����С/��С/���
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      #��ȡ���ӵȴ���ʱʱ��
+      max-wait: 20000
+      #�����ý���һ�μ�⣬�����Ҫ�رյĿ�������
+      time-between-eviction-runs-millis: 60000
+      #һ�������ڳ�����С�����ʱ��
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x' from dual
+      test-while-idle: true
+      test-on-borrow: true
+      test-on-return: false
+      #��PSCache����ָ��ÿ��������PSCache�Ĵ�С��oracle��Ϊtrue��mysql��Ϊfalse���ֿ�ֱ�϶��Ƽ�����Ϊfalse
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+
+# mybatis-spring-boot-autoconfigure
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+
+#��־
+logging:
+  level:
+    cn.hsa.vms: trace
+
+#���Ի�������spring security
+security:
+  basic:
+    enabled: false
+
+
+---
+spring:
+  profiles: prod
+# ����������־����
+logging:
+  file: ʵʱ��ش�����̨������־.log
+  level:
+    root: error
