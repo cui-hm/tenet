@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.tenet.dao.MonitorDao" >
+    <resultMap id="dashboardRow" type="com.example.tenet.entity.MonitorEntity">
+        <result column="id" property="id" />
+        <result column="data" property="data" />
+        <result column="url" property="url" />
+        <result column="tittle" property="tittle" />
+        <result column="name" property="name" />
+    </resultMap>
+    <resultMap id="id" type="integer" />
+    <insert id="insert" useGeneratedKeys="true" keyProperty="monitorEntity.id" keyColumn="id">
+    insert into monitor
+      (data) VALUES
+      (#{monitorEntity.data}
+      )
+  </insert>
+    <!-- 返回数组的例子 -->
+    <select id="getAllMonitorId" resultType="arraylist" resultMap="id">
+    select id from monitor;
+  </select>
+</mapper>
