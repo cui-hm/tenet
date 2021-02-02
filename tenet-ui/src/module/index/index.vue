@@ -16,26 +16,26 @@
 
 <script>
 export default {
-  name: "index.vue",
+  name: 'index.vue',
   props: {
     moduleRoutes: {
       type: Array,
       default: () => {
-        [];
+        []
       }
     }
   },
   data() {
     return {
       titleData: []
-    };
+    }
   },
   methods: {
     jump(item) {
-      this.$router.push({ path: item.jumpToPath });
+      this.$router.push({ path: item.jumpToPath })
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">

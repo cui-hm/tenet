@@ -65,7 +65,7 @@ export default {
   name: "monitor-components-config",
   data() {
     return {
-      input: "demo",
+      input: "GridItem",
       pramImportList: [],
       PramData:{},
     };

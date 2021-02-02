@@ -3,10 +3,7 @@
     <div class="EditorTop">
 
     </div>
-
-
   </div>
-  
 </template>
 
 <script>

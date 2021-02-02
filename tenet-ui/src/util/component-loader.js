@@ -19,4 +19,4 @@ function componentLoader(context) {
 // https://webpack.js.org/api/module-methods/#requirecontext
 // https://webpack.js.org/guides/dependency-management/#context-module-api
 // 自动扫描组件
-export const chartComponentLoader =new componentLoader(require.context('@/components/ui',true,/\.vue$/,'lazy'))
+export const chartComponentLoader =new componentLoader(require.context('@/components',true,/\.vue$/,'lazy'))

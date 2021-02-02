@@ -1,0 +1,12 @@
+# todo 这个配置文件需要研究一下有啥用
+[ignore]
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]
