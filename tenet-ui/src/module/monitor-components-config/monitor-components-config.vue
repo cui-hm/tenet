@@ -15,7 +15,7 @@
           v-model="input"
           placeholder="请输入内容"
           size="small "
-          @input="test()"
+          @input="queryProps()"
         ></el-input>
       </div>
       <div class="Param">
@@ -46,15 +46,10 @@
             </div>
           </div>
         </div>
-        <div class="addAndSub">
-          <i class="el-icon-circle-plus-outline" @click="add()"></i>
-          <i class="el-icon-remove-outline" @click="Sub()"></i>
-        </div>
-
       </div>
       <div class="bottom">
         <el-button type="primary" size="small" @click="setPramData()">预 览</el-button>
-        <el-button type="primary" size="small">发 布</el-button>
+        <el-button type="primary" size="small" @click="release()">发 布</el-button>
       </div>
     </div>
   </div>
@@ -62,6 +57,7 @@
 
 <script>
 import { chartComponentLoader } from "@/util/component-loader";
+import { insertComponent } from '@/service/component/component'
 export default {
   components: {
     ...chartComponentLoader.getComponentMap()
@@ -69,23 +65,13 @@ export default {
   name: "monitor-components-config",
   data() {
     return {
-      input: "",
+      input: "demo",
       pramImportList: [],
       PramData:{},
     };
   },
   methods: {
-    add() {
-      const pram = {
-        pramName: "",
-        pramNameValue: ""
-      };
-      this.pramImportList.push(pram);
-      this.test();
-    },
-    Sub() {
-      this.pramList.pop();
-    },
+    //组装参数列表成对象
     setPramData(){
       let PramData = {}
       this.pramImportList.forEach((item)=>{
@@ -93,7 +79,9 @@ export default {
       })
       this.PramData = PramData
     },
-    async test(){
+
+    //扫描组件中的所有参数
+    async queryProps(){
       const componentMap = chartComponentLoader.getComponentMap(this.input)
       const component = await componentMap[this.input]()
       this.pramImportList=[]
@@ -103,6 +91,37 @@ export default {
           pramNameValue: component.default.props[a].default
         };
         this.pramImportList.push(pram);
+      }
+
+    },
+    //发布到组件库
+    release(){
+      this.setPramData()
+      //控制组件参数不能为空 否则 PramDataflag=false
+      let PramDataflag = true
+      for(let item in this.PramData){
+        if(this.PramData[item] == null || this.PramData[item]==''){
+          PramDataflag = false
+        }
+      }
+      if(this.input && PramDataflag){
+        let componentEntity = {
+          id:'',
+          componentName:this.input,
+          componentConfig:JSON.stringify(this.PramData),
+          componentRem:'',
+          url:''
+        }
+        insertComponent(componentEntity)
+            .then(data=>{
+              if(data.substring(0,2)=='失败'){
+                this.$message.error(data);
+              }else{
+                this.$message.success(data);
+              }
+            })
+      }else{
+        this.$message.error('请确保组件名与参数值不为空');
       }
 
     }
@@ -191,25 +210,6 @@ export default {
               width: 90%;
             }
             /*padding:0px 1%;*/
-          }
-        }
-      }
-      .addAndSub {
-        padding: 0px 5px;
-        position: absolute;
-        bottom: -8px;
-        right: 40px;
-        color: white;
-        display: flex;
-        width: 50px;
-        justify-content: space-around;
-        background-color: #002140;
-
-        i {
-          transition: color 0.5s ease-out;
-          &:hover {
-            cursor: pointer;
-            color: #17d7be;
           }
         }
       }

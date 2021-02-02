@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.*;
 //页面的控制层
 public class MonitorController {
 
-    @Autowired private MonitorService dashboardService;
+    @Autowired private MonitorService monitorService;
 
 
     @PostMapping(value = "/insertWithData")
     public ResponseWrapper insertWithData(@RequestBody String data) {
-        return ResponseWrapper.successResponess(dashboardService.insertWithData(data));
+        return ResponseWrapper.successResponess(monitorService.insertWithData(data));
     }
 
 
     @GetMapping("/getAllMonitorId")
     public ResponseWrapper getAllMonitorId() {
-        return ResponseWrapper.successResponess(dashboardService.getAllMonitorId());
+        return ResponseWrapper.successResponess(monitorService.getAllMonitorId());
     }
 
 

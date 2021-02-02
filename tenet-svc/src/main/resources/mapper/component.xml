@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.tenet.dao.ComponentDao" >
+    <resultMap id="ComponentRow" type="com.example.tenet.entity.ComponentEntity">
+        <result column="id" property="id" />
+        <result column="componentName" property="componentName" />
+        <result column="componentConfig" property="componentConfig" />
+        <result column="componentRem" property="componentRem" />
+        <result column="url" property="url" />
+    </resultMap>
+    <resultMap id="id" type="integer" />
+    <resultMap id="componentName" type="String" />
+<!--    插入一个组件-->
+    <insert id="insertComponent" useGeneratedKeys="true" keyProperty="ComponentEntity.id" keyColumn="id">
+    insert into component
+      (componentName,componentConfig,componentRem,url) VALUES
+      (#{ComponentEntity.componentName},
+      #{ComponentEntity.componentConfig},
+      #{ComponentEntity.componentRem},
+      #{ComponentEntity.url})
+  </insert>
+
+<!--    查询所有组件名称-->
+    <select id="getAllComponentName" resultType="arraylist" resultMap="componentName">
+    select componentName from component;
+  </select>
+</mapper>

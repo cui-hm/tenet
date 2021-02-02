@@ -4,13 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MonitorEntity {
+public class ComponentEntity {
     private int id;
-    private String data;
+    private String componentName;
+    private String componentConfig;
+    private String componentRem;
     private String url;
-    private String tittle;
-    private String name;
 }
