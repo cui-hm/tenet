@@ -27,4 +27,9 @@ public class CompontService {
             return "失败";
         }
     };
+
+    public List<String> getAllComponentName(){
+
+        return componentDao.getAllComponentName();
+    }
 }

@@ -1,74 +1,83 @@
 <template>
-  <div class="main">
-    <div class="bench">
-      <div class="mainTittle" @click="setPramData()">组件配置工作台</div>
+  <div class='main'>
+    <div class='bench'>
+      <div class='mainTittle' @click='setPramData()'>组件配置工作台</div>
+      <div class="linshi">
+      <p>说明：</p>
+      <p>项目中components 下ui 文件夹内为 公用组件 </p>
+        <p> 例如 ui 文件夹下有 cc-button.vue 或 demo.vue </p>
+        <p> 第一步：右侧组件名输入 demo 或cc-button 变可自动扫描项目 加载这个组件 并自动扫描组件的prpos</p>
+        <p> 第二部：右侧输入栏输入 默认配置 </p>
+        <p> 第三部：点击发布 存到组件库 </p>
+        <p> 第四部：用以发布的组件 在页面配置(新)里应用 组装界面 </p>
+      </div>
       <component
-              :is="input"
-              v-bind="PramData"
+              :is='input'
+              v-bind='PramData'
       > </component>
     </div>
-    <div class="componentConfig">
-      <span class="componentTittle"> 组件配置 </span>
-      <div class="componentName">
+    <div class='componentConfig'>
+      <span class='componentTittle'> 组件配置 </span>
+      <div class='componentName'>
         <span> 组件名： </span>
         <el-input
-          v-model="input"
-          placeholder="请输入内容"
-          size="small "
-          @input="queryProps()"
+          v-model='input'
+          placeholder='请输入内容'
+          size='small '
+          @input='queryProps()'
         ></el-input>
       </div>
-      <div class="Param">
-        <span class="ParamTittle"> 参数 </span>
-        <div class="PramListTittle">
+      <div class='Param'>
+        <span class='ParamTittle'> 参数 </span>
+        <div class='PramListTittle'>
           <span> 参数名 </span>
           <span> 参数值 </span>
         </div>
-        <div class="pramListBox">
-          <div v-for="(item, index) in pramImportList" :key="index" class="PramList">
+        <div class='pramListBox'>
+          <div v-for='(item, index) in pramImportList' :key='index' class='PramList'>
             <div>
               <el-input
-                placeholder="请输入内容"
-                v-model="item.pramName"
+                placeholder='请输入内容'
+                v-model='item.pramName'
                 clearable
-                size="mini"
+                size='mini'
               >
               </el-input>
             </div>
             <div>
               <el-input
-                placeholder="请输入内容"
-                v-model="item.pramNameValue"
+                placeholder='请输入内容'
+                v-model='item.pramNameValue'
                 clearable
-                size="mini"
+                size='mini'
               >
               </el-input>
             </div>
           </div>
         </div>
       </div>
-      <div class="bottom">
-        <el-button type="primary" size="small" @click="setPramData()">预 览</el-button>
-        <el-button type="primary" size="small" @click="release()">发 布</el-button>
+      <div class='bottom'>
+        <el-button type='primary' size='small' @click='setPramData()'>预 览</el-button>
+        <el-button type='primary' size='small' @click='release()'>发 布</el-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { chartComponentLoader } from "@/util/component-loader";
+import { chartComponentLoader } from '@/util/component-loader'
 import { insertComponent } from '@/service/component/component'
 export default {
   components: {
     ...chartComponentLoader.getComponentMap()
   },
-  name: "monitor-components-config",
+  name: 'monitor-components-config',
   data() {
     return {
-      input: "GridItem",
+      input: '',
       pramImportList: [],
       PramData:{},
-    };
+    }
   },
   methods: {
     //组装参数列表成对象
@@ -89,8 +98,8 @@ export default {
         const pram = {
           pramName: a,
           pramNameValue: component.default.props[a].default
-        };
-        this.pramImportList.push(pram);
+        }
+        this.pramImportList.push(pram)
       }
 
     },
@@ -115,21 +124,21 @@ export default {
         insertComponent(componentEntity)
             .then(data=>{
               if(data.substring(0,2)=='失败'){
-                this.$message.error(data);
+                this.$message.error(data)
               }else{
-                this.$message.success(data);
+                this.$message.success(data)
               }
             })
       }else{
-        this.$message.error('请确保组件名与参数值不为空');
+        this.$message.error('请确保组件名与参数值不为空')
       }
 
     }
   }
-};
+}
 </script>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
 .main {
   width: 100%;
   height: 100%;
@@ -221,4 +230,11 @@ export default {
     }
   }
 }
+  .linshi{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0px;
+    left: 0px;
+  }
 </style>

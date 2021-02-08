@@ -6,6 +6,7 @@ import VueParticles from 'vue-particles'
 Vue.config.productionTip = false
 import store from '@/store/index'
 
+import './assets/iconfont/index.css'
 import 'element-ui/lib/theme-chalk/index.css'
 
 //更改element-ui 符合国家局要求颜色的全局变量  20200831 崔洪铭

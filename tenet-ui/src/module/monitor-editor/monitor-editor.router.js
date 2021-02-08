@@ -1,6 +1,6 @@
 export default {
-  path: '/monitor-editor',
-  jumpToPath: '/monitor-editor',
+  path: '/monitor-editor-demo-new',
+  jumpToPath: '/monitor-editor-demo-new',
   component: () => import('@/module/monitor-editor/monitor-editor.vue'),
-  name: '页面编辑'
+  name: '页面编辑新'
 }

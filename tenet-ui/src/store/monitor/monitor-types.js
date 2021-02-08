@@ -1,0 +1,2 @@
+export const SET_TOOL='SET_TOOL'
+export const SET_BACKGROUND='SET_BACKGROUND'

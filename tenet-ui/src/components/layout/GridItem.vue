@@ -5,7 +5,7 @@
       v-if="resizableAndNotStatic"
       ref="handle"
       :class="resizableHandleClass"
-    ></span>
+    >123123</span>
     <!--<span v-if="draggable" ref="dragHandle" class="vue-draggable-handle"></span>-->
   </div>
 </template>

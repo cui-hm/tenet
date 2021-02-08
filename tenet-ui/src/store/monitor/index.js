@@ -2,13 +2,34 @@ import * as monitorService from '@/service/monitor/monitor'
 import { getPresetMonitor } from '@/store/monitor/preset-monitor'
 import router from '@/router'
 import { errorMessage } from '@/util/message'
+import * as TYPES from '@/store/monitor/monitor-types'
 
 function state() {
   return {
-    demo: ''
+    tool: {
+      backgroudTool:false,
+      backgroudColor:false,
+      componentLibrary:false
+    },
+    background:'backgroundColor:#143555'
   }
 }
+const mutations = {
+  [TYPES.SET_TOOL]:function ( state ,ToolSwitchValue ) {
+    for(let item in state.tool){
+      if (item == ToolSwitchValue){
+        state.tool[item] = !state.tool[item]
+      }else{
+        state.tool[item] = false
+      }
+    }
+  },
+  [TYPES.SET_BACKGROUND]:function(state ,background){
+    state.background = background
+    console.log(state.background)
 
+  }
+}
 
 const actions = {
   jumpToNewMonitor() {
@@ -21,12 +42,21 @@ const actions = {
       .catch(e => {
         errorMessage(e)
       })
-  }
+  },
 }
+
+const getters = {
+  getTool:state =>state.tool,
+  getBackground:state => state.background
+}
+
+
 
 const namespaced = true
 
 export default {
+  mutations,
+  getters,
   state,
   actions,
   namespaced
