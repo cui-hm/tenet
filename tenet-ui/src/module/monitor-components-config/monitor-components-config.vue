@@ -18,6 +18,29 @@
     </div>
     <div class='componentConfig'>
       <span class='componentTittle'> 组件配置 </span>
+      <!--<el-popover-->
+              <!--placement="top-start"-->
+              <!--title="标题"-->
+              <!--width="50"-->
+              <!--trigger="hover"-->
+              <!--content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">-->
+        <!--<el-button slot="reference"><i class="el-icon-question"></i></el-button>-->
+      <!--</el-popover>-->
+
+      <span class="modal-title" >
+
+     <a  class="icon-mutex">?<i  class="mutex-tip">
+       <p>说明：</p>
+      <p>项目中components 下ui 文件夹内为 公用组件 </p>
+        <p> 例如 ui 文件夹下有 cc-button.vue 或 demo.vue </p>
+        <p> 第一步：右侧组件名输入 demo 或cc-button 变可自动扫描项目 加载这个组件 并自动扫描组件的prpos</p>
+        <p> 第二部：右侧输入栏输入 默认配置 </p>
+        <p> 第三部：点击发布 存到组件库 </p>
+        <p> 第四部：用以发布的组件 在页面配置(新)里应用 组装界面 </p>
+     </i></a>
+
+           </span>
+
       <div class='componentName'>
         <span> 组件名： </span>
         <el-input
@@ -237,4 +260,107 @@ export default {
     top: 0px;
     left: 0px;
   }
+
+
+
+.modal-title .icon-mutex {
+
+  font-size: 16px;
+
+  color: #2bb7c5;
+
+  text-align: center;
+
+  line-height: 20px;
+
+  cursor: pointer;
+
+  position: relative;
+
+  display: inline-block;
+
+  width: 20px;
+
+  height: 20px;
+
+  position: relative;
+
+  border: 1px solid #2bb7c5;
+
+  border-radius: 50%;
+
+  margin-left: 10px;
+
+
+
+}
+
+.modal-title .icon-mutex:hover {
+
+  color: #2bb7c5;
+
+}
+
+.modal-title i {
+
+  width: 350px;
+
+  display: none;
+
+  position: absolute;
+
+  left: -200px;
+
+  top: 27px;
+
+  font-size: 12px;
+
+  font-style:normal;
+
+  color: #fff;
+
+  text-align: left;
+
+  background-color: rgba(1,1,1,0.7);
+  /*background-color: #3c75e4;*/
+
+  padding: 3px 5px;
+
+  z-index: 2;
+
+}
+
+.modal-title .icon-mutex:hover i {
+
+  display: block;
+
+}
+
+.modal-title i::before {
+
+  display: inline-block;
+
+  width: 0;
+
+  height: 0;
+
+  content: '';
+
+  margin-left: 2px;
+
+  vertical-align: middle;
+
+  border-bottom: 6px solid #010101b3;
+
+  border-right: 6px solid transparent;
+
+  border-left: 6px solid transparent;
+
+  position: absolute;
+
+  top: -5px;
+
+  left: 20px;
+
+}
 </style>
