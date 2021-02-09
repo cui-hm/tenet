@@ -6,7 +6,7 @@
          @mouseup="mouseup($event)"
          @mousemove="mousemove($event)">
       <ul ref="demo">
-        <div class="EditorTopTittle"> 工具栏 {{this.toolIndex}}</div>
+        <div class="EditorTopTittle"> 工具栏</div>
         <li v-for="(item,index) in toolData" :key="index" @click="toolEvent(index)" :class="[{'select':ShowComponent(item.toolFlag)}]">
           <span :class="[item.icon]"> </span> {{item.name}}
         </li>
@@ -89,8 +89,7 @@
           this.toolFlag.splice(spliceIndex, 1)
         }
       },
-      backgroundConfig(index){
-        this.toolIndex =index
+      backgroundConfig(){
       },
       mousedown(event){
         this.move=true
