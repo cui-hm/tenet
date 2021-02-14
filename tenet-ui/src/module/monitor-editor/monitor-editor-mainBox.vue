@@ -56,7 +56,8 @@
           {'x':8,'y':10,'w':2,'h':5,'i':'16'},
           {'x':10,'y':4,'w':2,'h':2,'i':'17'},
           {'x':0,'y':9,'w':2,'h':3,'i':'18'},
-          {'x':2,'y':6,'w':2,'h':2,'i':'19'}
+          {'x':2,'y':6,'w':2,'h':2,'i':'19'},
+          // {'x':2,'y':6,'w':2,'h':9,'i':'20'}
         ],
       }
     },
@@ -72,12 +73,21 @@
 </script>
 
 <style scoped lang="scss">
+  /**{*/
+    /*margin: 0;*/
+  /*padding: 0;*/
+  /*}*/
+  /*html,body{*/
+     /*width: 100%;*/
+     /*height: 100%;*/
+     /*}*/
   .mainBox{
     width: 100%;
     //background: #143555;
     background-size: 100% 100%;
     position: relative;
-    height: 100%;
+    height: 100vh;
+
     .demo{
       border: 1px red solid;
       color: white;

@@ -56,7 +56,7 @@
 
 <style scoped lang="scss">
 .componentLibrary{
-  margin-left: 12px;
+  text-align: left;
   background: #031b32;
   border: 1px solid #295278;
   box-shadow: 0 2px 6px 0 rgb(6 7 23 / 70%);
@@ -67,10 +67,13 @@
   letter-spacing: 0;
   max-height: 60vh;
   min-height: 30vh;
-  overflow: auto;
+  /*overflow: auto;*/
   width: 570px;
+
+  margin-left: -13px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   .tittle{
     width: 100%;
     height: 62px;

@@ -20,7 +20,8 @@
       <div>
         <div> 使用图片 </div>
         <div class="contain_img" >
-          <img :src="item.src" v-for="(item,index) in backfroundImg" :key="index">
+          <img :src="item.src" v-for="(item,index) in backfroundImg" :key="index" @click="setbackGround(item.style)">
+          <!--<div :style="{ 'background':  'url(' + require('../../../assets/background/lss-homepage-bg-2.png') + ')',}"></div>-->
         </div>
       </div>
       <div>
@@ -82,10 +83,14 @@
         ],
         backfroundImg:[
           {
-            src:require('../../../assets/background/hn.jpg')
+            src:require('../../../assets/background/hn.jpg'),
+            style:'background: url(' + require('../../../assets/background/hn.jpg') + ')'
+
           },
           {
-            src:require('../../../assets/background/lss-homepage-bg-2.png')
+            src:require('../../../assets/background/lss-homepage-bg-2.png'),
+            // style:'backgroundImage: 'url(' + require('../../../assets/background/hn.jpg') + ')''
+            style:'background: url(' + require('../../../assets/background/lss-homepage-bg-2.png') + ')'
           }
         ],
         tool:this.$store.state.tool
@@ -108,7 +113,6 @@
   flex-direction: column;
   justify-content: space-between;
   text-align:left;
-
   background: #031b32;
   border: 1px solid #295278;
   box-shadow: 0 2px 6px 0 rgb(6 7 23 / 70%);
@@ -118,15 +122,21 @@
   color: #cde6ff;
   letter-spacing: 0;
   height: 280px;
+
+
   .contian{
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+
     .contain_color{
       display: flex;
       justify-content: space-around;
       margin-top: 10px;
+
+
       .item_color{
         width: 16px;
         height: 16px;
