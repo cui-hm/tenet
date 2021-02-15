@@ -21,7 +21,6 @@
         <div> 使用图片 </div>
         <div class="contain_img" >
           <img :src="item.src" v-for="(item,index) in backfroundImg" :key="index" @click="setbackGround(item.style)">
-          <!--<div :style="{ 'background':  'url(' + require('../../../assets/background/lss-homepage-bg-2.png') + ')',}"></div>-->
         </div>
       </div>
       <div>
@@ -89,7 +88,6 @@
           },
           {
             src:require('../../../assets/background/lss-homepage-bg-2.png'),
-            // style:'backgroundImage: 'url(' + require('../../../assets/background/hn.jpg') + ')''
             style:'background: url(' + require('../../../assets/background/lss-homepage-bg-2.png') + ')'
           }
         ],

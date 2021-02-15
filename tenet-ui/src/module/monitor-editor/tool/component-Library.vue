@@ -3,25 +3,32 @@
   -->
 <template>
   <div class="componentLibrary">
-    <div class="tittle">
-      <div class="classifyContent">
-        <span class="classifyDes">组件类型</span>
-        <el-select size="mini" class="classifySelectContent"> </el-select>
-      </div>
-      <div class="classifyContent">
-        <span class="classifyDes">业务主题</span>
-        <el-select size="mini" class="classifySelectContent"> </el-select>
-      </div>
-      <div class="classifyContent">
-        <span class="classifyDes">查询</span>
-        <el-select size="mini" class="classifySelectContent"> </el-select>
-      </div>
+<!--    <div class="tittle">-->
+<!--      <div class="classifyContent">-->
+<!--        <span class="classifyDes">组件类型</span>-->
+<!--        <el-select size="mini" class="classifySelectContent"> </el-select>-->
+<!--      </div>-->
+<!--      <div class="classifyContent">-->
+<!--        <span class="classifyDes">业务主题</span>-->
+<!--        <el-select size="mini" class="classifySelectContent"> </el-select>-->
+<!--      </div>-->
+<!--      <div class="classifyContent">-->
+<!--        <span class="classifyDes">查询</span>-->
+<!--        <el-select size="mini" class="classifySelectContent"> </el-select>-->
+<!--      </div>-->
+<!--    </div>-->
+    <div class="body">
+        <div class="componentBox" v-for="(item,index) in AllComponentNameList" :key="index" @click="selectAndAddComponent(item)">
+          <component
+                  :is="item">
+          </component>
+        </div>
     </div>
-    <div class="body"></div>
   </div>
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
   import { getAllComponentName } from '@/service/component/component'
   import { chartComponentLoader } from '@/util/component-loader'
   export default {
@@ -31,25 +38,15 @@
     },
     created(){
       getAllComponentName().then(
-          item =>{ this.test = item}
-          )
+          item =>{ this.AllComponentNameList = item})
     },
     data(){
       return{
-        input:'',
-        value:'',
-        options:[{
-          value: '选项1',
-          label: '黄金糕'
-        }, {
-          value: '选项2',
-          label: '双皮奶'
-        }, {
-          value: '选项3',
-          label: '蚵仔煎'
-        }],
-        test:[]
+        AllComponentNameList:[]
       }
+    },
+    methods:{
+      ...mapActions('monitor', ['selectAndAddComponent'])
     }
   }
 </script>
@@ -69,11 +66,9 @@
   min-height: 30vh;
   /*overflow: auto;*/
   width: 570px;
-
   margin-left: -13px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   .tittle{
     width: 100%;
     height: 62px;
@@ -105,6 +100,21 @@
     color: #cde6ff;
     border-radius: 2px;
     padding: 0 18px 0 5px;
+  }
+  .body{
+    display: flex;
+    /*flex-flow:column wrap;*/
+    .componentBox{
+      margin: 5px;
+      border: 1px red solid;
+      width: calc(100%/3 - 5px);
+      opacity: 0.8;
+      &:hover{
+        opacity: 1;
+        cursor: pointer;
+        border: 1px greenyellow solid;
+      }
+    }
   }
 }
 </style>
