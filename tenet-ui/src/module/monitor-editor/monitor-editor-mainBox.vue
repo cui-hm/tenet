@@ -1,7 +1,7 @@
 <template>
   <div class="mainBox" :style="background">
   <grid-layout
-          :layout.sync="getCompinentsList"
+          :layout.sync="layoutList"
           :col-num="48"
           :row-height="30"
           :is-draggable="true"
@@ -12,7 +12,7 @@
           :use-css-transforms="true"
           :prevent-collision="true"
   >
-    <grid-item v-for="item in getCompinentsList"
+    <grid-item v-for="item in layoutList"
                :x="item.x"
                :y="item.y"
                :w="item.w"
@@ -48,9 +48,15 @@
     data() {
       return {
         layout: [
-          {'x':0,'y':0,'w':2,'h':2,'i':'0'},
+          {componentName: 'demo2',
+            h: 5,
+            i: 51,
+            w: 5,
+            x: 0,
+            y: 0}
         ],
-        a:'demo2'
+        a:'demo2',
+        //getmonitorComponentList:this.$store.getters['monitor/getmonitorComponentList']
       }
     },
     methods: {
@@ -59,8 +65,15 @@
     computed:{
       ...mapGetters(('monitor'),{
         background:'getBackground',
-        getCompinentsList:'getCompinentsList'
-      })
+        getmonitorComponentList:'getmonitorComponentList'
+      }),
+      layoutList(){
+        let layoutList=[]
+        this.getmonitorComponentList.forEach(item=>{
+           layoutList.push(item.data)
+        })
+        return layoutList
+      }
     }
   }
 </script>

@@ -28,7 +28,6 @@ export default {
     jumpTo(monitorId) {
         router.push({ name: '页面编辑', params: { monitorId } })
     },
-
     //mapActions 是將vuex中的方法映射到 methods中 直接儅methods用
     ...mapActions('monitor', {
       //jumpToNew是起別名的意思

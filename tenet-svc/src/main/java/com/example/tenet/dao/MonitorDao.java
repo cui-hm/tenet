@@ -15,5 +15,5 @@ public interface MonitorDao {
 
     List<Integer> getAllMonitorId();
 
-
+    MonitorEntity getMonitorData(@Param("MonitorId") int MonitorId);
 }

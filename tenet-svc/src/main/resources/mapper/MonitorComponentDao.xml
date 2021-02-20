@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.tenet.dao.MonitorComponentDao" >
+    <resultMap id="monitorComponentRow" type="com.example.tenet.entity.MonitorComponentEntity">
+        <result column="monitor_component_id" property="monitorComponentId" />
+        <result column="data" property="data" />
+        <result column="monitor_id" property="monitorId" />
+    </resultMap>
+    <resultMap id="monitorComponentId" type="integer" />
+    <insert id="insertMonitorComponen"  useGeneratedKeys="true" keyProperty="monitorComponentEntity.monitorComponentId" keyColumn="monitorComponentId" >
+        insert into monitor_component
+      (monitor_id) VALUES
+      (#{monitorComponentEntity.monitorId})
+    </insert>
+    <!-- 返回数组的例子 -->
+    <select id="getMonitorComponentDtoListByMonitorId" resultType="arraylist" resultMap="monitorComponentRow">
+        select * from monitor_component
+        where monitor_id = #{MonitorId};
+    </select>
+
+    <!--更改页面组件-->
+    <update id="upMonitorComponentData" >
+        update monitor_component
+        set data =#{monitorComponentDto.data}
+        where monitor_component_id = #{monitorComponentDto.monitorComponentId}
+    </update>
+</mapper>

@@ -3,19 +3,55 @@
     <div class="arrowRight"> <i class="el-icon-arrow-left"></i> </div>
     <div class="menuNameBox">
       <span class="menuName"> 页面名称: </span>
-      <span class="menuNameInput"> 测试 </span>
+      <span class="menuNameInput"> {{getMonitorTittle}} </span>
     </div>
     <div class="btn_list">
       <el-button type="success" size="mini" icon="el-icon-view">预 览</el-button>
-      <el-button type="primary" size="mini" icon="el-icon-s-order">保 存</el-button>
+      <el-button type="primary" size="mini" icon="el-icon-s-order" @click="save()">保 存</el-button>
       <el-button type="warning" size="mini" icon="el-icon-position">发 布</el-button>
     </div>
   </div>
 </template>
 
 <script>
+  import { mapGetters,mapMutations,mapActions } from 'vuex'
+  import * as TYPES from '@/store/monitor/monitor-types'
+  //import { saveMonitor} from '@/service/monitor/monitor'
   export default {
-    name: 'monitor-editor-tittle'
+    name: 'monitor-editor-tittle',
+    data(){
+      return{
+        dialogShow:false,
+        monitorNameAndTittle:{
+          name:'',
+          tittle:''
+        }
+      }
+    },
+    computed:{
+      ...mapGetters(('monitor'),{
+        getMonitorName:'getMonitorName',
+        getMonitorTittle:'getMonitorTittle'
+      }),
+    },
+    methods:{
+      ...mapMutations(('monitor'),{
+        SET_MONITORNAME : TYPES.SET_MONITORNAME,
+        SET_MONITORTITTLE : TYPES.SET_MONITORTITTLE
+      }),
+      ...mapActions('monitor', {
+        saveMonitor: 'saveMonitor'
+      }),
+      save(){
+        this.saveMonitor()
+      },
+      //传组件名及组件说明
+      setMonitoeName(){
+        this.SET_MONITORNAME(this.monitorNameAndTittle.name)
+        this.SET_MONITORTITTLE(this.monitorNameAndTittle.tittle)
+        this.dialogShow = false
+      }
+    }
   }
 </script>
 
