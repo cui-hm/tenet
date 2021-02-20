@@ -14,4 +14,6 @@ public interface ComponentDao {
 
     List<String> getAllComponentName();
 
+    List<ComponentEntity> getAllComponentData();
+
 }

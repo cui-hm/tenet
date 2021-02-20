@@ -19,9 +19,12 @@
 <!--    </div>-->
     <div class="body">
         <div class="componentBox" v-for="(item,index) in AllComponentNameList" :key="index" @click="selectAndAddComponent(item)">
-          <component
-                  :is="item">
-          </component>
+          <div class="img">
+            <img :src="item.url" >
+          </div>
+<!--          <component-->
+<!--                  :is="item">-->
+<!--          </component>-->
         </div>
     </div>
   </div>
@@ -29,7 +32,7 @@
 
 <script>
   import { mapActions } from 'vuex'
-  import { getAllComponentName } from '@/service/component/component'
+  import { getAllComponentData } from '@/service/component/component'
   import { chartComponentLoader } from '@/util/component-loader'
   export default {
     name: 'componentLibrary',
@@ -37,7 +40,7 @@
       ...chartComponentLoader.getComponentMap()
     },
     created(){
-      getAllComponentName().then(
+      getAllComponentData().then(
           item =>{ this.AllComponentNameList = item})
     },
     data(){
@@ -109,6 +112,12 @@
       border: 1px red solid;
       width: calc(100%/3 - 5px);
       opacity: 0.8;
+      .img{
+        width: 100%;
+        img{
+          width: 100%;
+        }
+      }
       &:hover{
         opacity: 1;
         cursor: pointer;

@@ -23,5 +23,10 @@ public class ComponentController {
         return ResponseWrapper.successResponess(compontService.getAllComponentName());
     }
 
+    @GetMapping("/getAllComponentData")
+    public ResponseWrapper getAllComponentData(){
+        return ResponseWrapper.successResponess(compontService.getAllComponentData());
+    }
+
 
 }

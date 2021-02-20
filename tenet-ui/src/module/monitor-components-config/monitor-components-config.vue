@@ -2,30 +2,17 @@
   <div class='main'>
     <div class='bench'>
       <div class='mainTittle' @click='setPramData()'>组件配置工作台</div>
-      <div class="linshi">
-      <p>说明：</p>
-      <p>项目中components 下ui 文件夹内为 公用组件 </p>
-        <p> 例如 ui 文件夹下有 cc-button.vue 或 demo.vue </p>
-        <p> 第一步：右侧组件名输入 demo 或cc-button 变可自动扫描项目 加载这个组件 并自动扫描组件的prpos</p>
-        <p> 第二部：右侧输入栏输入 默认配置 </p>
-        <p> 第三部：点击发布 存到组件库 </p>
-        <p> 第四部：用以发布的组件 在页面配置(新)里应用 组装界面 </p>
+      <div class='imgUrl' ref="imgUrl">
+        <component
+                :is='input'
+                v-bind='PramData'
+        > </component>
       </div>
-      <component
-              :is='input'
-              v-bind='PramData'
-      > </component>
+
     </div>
     <div class='componentConfig'>
       <span class='componentTittle'> 组件配置 </span>
-      <!--<el-popover-->
-              <!--placement="top-start"-->
-              <!--title="标题"-->
-              <!--width="50"-->
-              <!--trigger="hover"-->
-              <!--content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">-->
-        <!--<el-button slot="reference"><i class="el-icon-question"></i></el-button>-->
-      <!--</el-popover>-->
+
 
       <span class="modal-title" >
 
@@ -90,6 +77,7 @@
 <script>
 import { chartComponentLoader } from '@/util/component-loader'
 import { insertComponent } from '@/service/component/component'
+import html2canvas from 'html2canvas/dist/html2canvas.js'
 export default {
   components: {
     ...chartComponentLoader.getComponentMap()
@@ -144,14 +132,19 @@ export default {
           componentRem:'',
           url:''
         }
-        insertComponent(componentEntity)
-            .then(data=>{
-              if(data.substring(0,2)=='失败'){
-                this.$message.error(data)
-              }else{
-                this.$message.success(data)
-              }
-            })
+
+        html2canvas(this.$refs.['imgUrl']).then(canvas => {
+          let dataURL = canvas.toDataURL()
+          componentEntity.url = dataURL
+          insertComponent(componentEntity)
+              .then(data=>{
+                if(data.substring(0,2)=='失败'){
+                  this.$message.error(data)
+                }else{
+                  this.$message.success(data)
+                }
+              })
+        })
       }else{
         this.$message.error('请确保组件名与参数值不为空')
       }

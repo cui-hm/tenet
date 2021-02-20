@@ -9,3 +9,8 @@ export function getAllComponentName() {
   return monitorBaseService.get('component/getAllComponentName')
 }
 
+//获取全部信息
+export function getAllComponentData() {
+  return monitorBaseService.get('component/getAllComponentData')
+}
+

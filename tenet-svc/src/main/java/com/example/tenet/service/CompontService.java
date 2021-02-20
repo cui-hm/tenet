@@ -32,4 +32,9 @@ public class CompontService {
 
         return componentDao.getAllComponentName();
     }
+
+    public List<ComponentEntity> getAllComponentData(){
+
+        return componentDao.getAllComponentData();
+    }
 }

@@ -24,4 +24,8 @@
     <select id="getAllComponentName" resultType="arraylist" resultMap="componentName">
     select componentName from component;
   </select>
+
+    <select id="getAllComponentData" resultType="arraylist" resultMap="ComponentRow">
+    select * from component;
+  </select>
 </mapper>
