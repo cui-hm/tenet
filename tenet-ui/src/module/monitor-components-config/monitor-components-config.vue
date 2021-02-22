@@ -174,6 +174,13 @@ export default {
     align-self: center;
     justify-content: center;
     font-weight: 700;
+    .imgUrl{
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: red 1px solid;
+    }
   }
   .componentConfig {
     height: 100%;

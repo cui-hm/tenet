@@ -106,7 +106,9 @@
   }
   .body{
     display: flex;
-    /*flex-flow:column wrap;*/
+    flex-direction: row;
+    column-count: 3;
+    column-width:calc(100%/3 - 5px);
     .componentBox{
       margin: 5px;
       border: 1px red solid;

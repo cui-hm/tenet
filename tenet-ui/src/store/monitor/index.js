@@ -78,7 +78,7 @@ const actions = {
         errorMessage(e)
       })
   },
-  selectAndAddComponent(rootState,componentName){
+  selectAndAddComponent(rootState,componen){
     monitorComponentService.insertMonitorComponent(rootState.state.monitorId).then(
         (item)=>{
           let monitorComponent={
@@ -86,7 +86,7 @@ const actions = {
             data:JSON.parse(JSON.stringify(componentTemplate))
           }
           monitorComponent.data.i = item
-          monitorComponent.data.componentName =componentName
+          monitorComponent.data.componentName =componen.componentName
           rootState.state.monitorComponentList.push(monitorComponent)
         }
     )
