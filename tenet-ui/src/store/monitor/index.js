@@ -48,6 +48,8 @@ const mutations = {
       item.data=JSON.parse(item.data)
     })
     Object.assign(state, monitorData)
+    state.background = JSON.parse(monitorData.data).background
+    console.log(state)
   },
 
   //修改背景色

@@ -34,6 +34,7 @@ public class MonitorController {
 
     @PostMapping("/upMonitorData")
     public ResponseWrapper upMonitorData(@RequestBody MonitorDto monitorDto) {
+
         return ResponseWrapper.successResponess(monitorService.upMonitorData(monitorDto));
     }
 

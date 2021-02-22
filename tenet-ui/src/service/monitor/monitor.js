@@ -22,6 +22,9 @@ export function saveMonitor(MonitorData) {
     monitorComponentList:[
     ]
   }
+  let monitorJsonData = JSON.parse(jsonData.data)
+  monitorJsonData.background = jsonData.background
+  monitorDto.data = JSON.stringify(monitorJsonData)
   jsonData.monitorComponentList.forEach((item)=>{
     let monitorComponent = {
       monitorComponentId : item.monitorComponentId,
@@ -29,6 +32,7 @@ export function saveMonitor(MonitorData) {
     }
     monitorDto.monitorComponentList.push(monitorComponent)
   })
+  console.log(monitorDto)
   return monitorBaseService.post('monitor/upMonitorData',monitorDto)
 }
 

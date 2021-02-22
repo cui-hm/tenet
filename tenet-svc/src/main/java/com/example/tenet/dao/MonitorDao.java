@@ -16,4 +16,6 @@ public interface MonitorDao {
     List<Integer> getAllMonitorId();
 
     MonitorEntity getMonitorData(@Param("MonitorId") int MonitorId);
+
+    int upMonitorData(@Param("monitorEntity") MonitorEntity monitorEntity);
 }

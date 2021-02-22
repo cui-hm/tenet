@@ -16,6 +16,7 @@ public class MonitorComponentContriller {
 
     @PostMapping(value = "/insertMonitorComponent")
     public ResponseWrapper insertMonitorComponent(@RequestBody int monitorId){
+
         return ResponseWrapper.successResponess(monitorComponentService.insertMonitorComponen(monitorId));
     }
 }

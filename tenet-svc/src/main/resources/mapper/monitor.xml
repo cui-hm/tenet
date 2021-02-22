@@ -25,5 +25,11 @@
     where id=#{MonitorId}
     </select>
 
+    <update id="upMonitorData" >
+        update monitor
+        set data =#{monitorEntity.data}
+        where id = #{monitorEntity.id}
+    </update>
+
 
 </mapper>

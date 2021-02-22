@@ -44,6 +44,8 @@ public class MonitorService {
     }
 
     public String upMonitorData(MonitorDto monitorDto){
+        MonitorEntity monitorEntity = new MonitorEntity(monitorDto.getMonitorId(),monitorDto.getData(),monitorDto.getTittle(),monitorDto.getName());
+        monitorDao.upMonitorData(monitorEntity);
         monitorComponentService.upMonitorComponentData(monitorDto.getMonitorComponentList());
         return "保存成功";
     }
