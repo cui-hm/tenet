@@ -21,6 +21,7 @@
 <!--                class="lizi"-->
 <!--        >-->
 <!--        </vue-particles>-->
+        <!--<demo10></demo10>-->
     </div>
 </template>
 <style>
@@ -53,3 +54,11 @@
   }
 
 </style>
+<script>
+
+
+  // import Demo10 from './components/ui/demo10'
+  export default {
+    // components: {Demo10}
+  }
+</script>
