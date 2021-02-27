@@ -2,11 +2,11 @@
     <div class="yewujingbanBox">
         <h3 class="title">{{ title }}</h3>
         <div v-if="isdialog" class="detail">
-            <l02Dialog
-                    :chart="chart"
-                    :title="diualogtitle">
-                    :dialogShow=false
-            </l02Dialog>
+            <!--<l02Dialog-->
+                    <!--:chart="chart"-->
+                    <!--:title="diualogtitle">-->
+                    <!--:dialogShow=false-->
+            <!--</l02Dialog>-->
 
         </div>
         <a v-if="isjumpTo"  class="detail">查看更多</a>
