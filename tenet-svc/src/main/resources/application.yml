@@ -23,9 +23,9 @@ spring:
 #      url: jdbc:mysql://10.130.131.204:3323/OMS_DB?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
 #      username: oms_db
 #      password: cNqGt78T
-      url: jdbc:mysql://localhost:3306/demo_db?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
-      username: root
-      password: 123456
+      url: jdbc:mysql://82.157.1.104:3306/tenet?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+      username: tenet
+      password: cui15568402022
       #          url: jdbc:mysql://192.168.174.69:3306/hsa_vms?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
       #          username: hsa_vms
       #          password: hsa_vms

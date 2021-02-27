@@ -162,20 +162,23 @@ export default {
   top: 0px;
   display: flex;
   .mainTittle {
-    width: 100%;
+    //width: 100%;
     height: 40px;
-    position: absolute;
+    //position: absolute;
     top: 18px;
     font-size: 28px;
   }
   .bench {
+    height: 100%;
     width: 100%;
     display: flex;
     align-self: center;
+    flex-flow: column;
     justify-content: center;
     font-weight: 700;
     .imgUrl{
-      width: 50%;
+      height: 80%;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
