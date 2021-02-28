@@ -1,0 +1,20 @@
+export default {
+  labelList:[{
+    value:'123123',
+    unit:'%',
+    percent:33333,
+    name:'aaaa',
+    describe:[
+      {
+        name:'aaaa',
+        value:'1111',
+        unit:'万'
+      },
+      {
+        name:'bbbbb',
+        value:'22222',
+        unit:'万'
+      }
+    ],
+  }]
+}

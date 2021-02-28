@@ -6,6 +6,7 @@
 <script>
   //引入option 写出去方便以后改图
   import defaultOption from '@/components/Option/trendsBar'
+
   //引入data 更清晰看出data格式
   import defaultData from  '@/components/Data/trendsBar'
   export default {

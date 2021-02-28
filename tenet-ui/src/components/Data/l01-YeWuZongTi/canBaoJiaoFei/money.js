@@ -1,0 +1,20 @@
+export default{
+  labelList:[{
+    value:0,
+    unit:'%',
+    percent:0,
+    name:'基本医保缴费金额',
+    describe:[
+      {
+        name:'城镇职工医保缴费金额',
+        value:'',
+        unit:'万'
+      },
+      {
+        name:'城乡居民医保缴费金额',
+        value:'',
+        unit:'万'
+      }
+    ],
+  }]
+}
